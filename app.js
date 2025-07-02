@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 //routes
-app.use("api/auth", authRoute);
+app.use("/api/auth", authRoute);
 
 connectDB().then(() => {
   const PORT = process.env.PORT || 5000;

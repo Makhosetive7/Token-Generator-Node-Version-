@@ -49,9 +49,21 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["houseHold", "admin"],
-    default: admin,
+    enum: ["tokenBuyer", "admin"],
+    default: "tokenBuyer",
   },
+});
+
+//hook to auto generate account number
+userSchema.pre("validate", function (next) {
+  if (!this.accountNumber) {
+    const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, ""); 
+    const namePart = this.firstName.substring(0, 3).toUpperCase(); 
+    const randomPart = Math.floor(100 + Math.random() * 900); 
+
+    this.accountNumber = `${namePart}${datePart}${randomPart}`;
+  }
+  next()
 });
 
 export default mongoose.model("user", userSchema);

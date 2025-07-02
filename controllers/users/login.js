@@ -1,6 +1,10 @@
 import User from "../../models/user.js";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
 export const login = async (req, res) => {
+  const JWT_SECRET = process.env.JWT_SECRET;
+
   try {
     const { email, password } = req.body;
 
@@ -13,16 +17,23 @@ export const login = async (req, res) => {
       });
     }
 
-    //password validation
-    if (user.password !== password) {
-      return res.status(400).json({
-        message: "Password is wrong",
-      });
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
+    if (!isPasswordMatch) {
+      return res
+        .status(400)
+        .json({ error: "Invalid password please try again" });
     }
+
+    const tokenGenerated = jwt.sign(
+      { email: user.email, firstName: user.firstName },
+      JWT_SECRET,
+      { expiresIn: "7d" }
+    );
 
     // Login success
     res.status(200).json({
       message: "Login successful",
+      tokenGenerated,
       user: {
         id: user._id,
         email: user.email,
@@ -32,7 +43,7 @@ export const login = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("error is found");
+     console.error("Login error:", error.message);
     res.status(500).json({ message: "server error " });
   }
 };
