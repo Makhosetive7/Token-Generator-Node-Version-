@@ -43,13 +43,21 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  vendorType: {
+    type: String,
+    required: false,
+  },
+  donationType: {
+    type: String,
+    required: false,
+  },
   updatedAt: {
     type: Date,
     default: null,
   },
   role: {
     type: String,
-    enum: ["tokenBuyer", "admin"],
+    enum: ["tokenBuyer", "vendor", "donations", "admin"],
     default: "tokenBuyer",
   },
 });
@@ -57,13 +65,13 @@ const userSchema = new mongoose.Schema({
 //hook to auto generate account number
 userSchema.pre("validate", function (next) {
   if (!this.accountNumber) {
-    const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, ""); 
-    const namePart = this.firstName.substring(0, 3).toUpperCase(); 
-    const randomPart = Math.floor(100 + Math.random() * 900); 
+    const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+    const namePart = this.firstName.substring(0, 3).toUpperCase();
+    const randomPart = Math.floor(100 + Math.random() * 900);
 
     this.accountNumber = `${namePart}${datePart}${randomPart}`;
   }
-  next()
+  next();
 });
 
 export default mongoose.model("user", userSchema);

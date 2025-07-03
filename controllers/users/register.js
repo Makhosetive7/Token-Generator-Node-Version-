@@ -12,6 +12,8 @@ export const register = async (req, res) => {
       confirmPassword,
       phoneNumber,
       homeAddress,
+      vendorType,
+      donationType,
       role,
     } = req.body;
 
@@ -20,17 +22,34 @@ export const register = async (req, res) => {
       return res.status(400).json({ message: "user already available" });
     }
 
-    //check input validation
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !password ||
-      !confirmPassword ||
-      !phoneNumber ||
-      !homeAddress
-    ) {
-      return res.status(400).json({ message: "Please fill all the blanks" });
+    //basic input validation for token buyer
+    if (!email || !password || !role) {
+      return res
+        .status(400)
+        .json({ message: "Email, password, and role are required" });
+    }
+
+    //role specific validation
+    if (role === "tokenBuyer") {
+      if (!firstName || !lastName || !phoneNumber || !homeAddress) {
+        return res
+          .status(400)
+          .json({ message: "All token buyer fields are required" });
+      }
+    }
+
+    if (role === "vendor") {
+      if (!vendorType || !firstName) {
+        return res
+          .status(400)
+          .json({ message: "Vendor type and name are required" });
+      }
+    }
+
+    if (role === "donation") {
+      if (!donationType) {
+        return res.status(400).json({ message: "Donation type is required" });
+      }
     }
 
     //check password validation
@@ -49,6 +68,8 @@ export const register = async (req, res) => {
       confirmPassword,
       phoneNumber,
       homeAddress,
+      vendorType,
+      donationType,
       role,
     });
     await newUser.save();
