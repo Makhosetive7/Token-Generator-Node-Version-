@@ -1,7 +1,7 @@
 import User from "../../models/user.js";
-import Donation from "../../models/donations.js";;
+import Vendor from "../../models/vendor.js";
 
-export const getDonationHistory = async (req, res) => {
+export const getVendorPurchaseHistory = async (req, res) => {
   try {
     const { accountNumber } = req.params;
 
@@ -11,13 +11,12 @@ export const getDonationHistory = async (req, res) => {
       return res.status(404).json({ message: "user not found" });
     }
 
-    const donations = await Donation.find({ sender: user._id })
+    const vendorPurchase = await Vendor.find({ sender: user._id })
       .populate("receiver", "firstName lastName accountNumber")
       .sort({ createdAt: -1 });
-
-    res.status(200).json({ donations });
+    res.status(200).json({ vendorPurchase });
   } catch (error) {
-    console.error("Failed to fetch donation history", error);
+    console.error("failed to reach vendor purchase error");
     res.status(500).json({ message: "server error" });
   }
 };
