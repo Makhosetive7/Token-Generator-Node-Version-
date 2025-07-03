@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import connectDB from "./config/database.js";
+import { startScheduledDonations } from "./cron/scheduleDonation.js";
 
 import authRoute from "./routes/authRoute.js";
 import tokenRoute from "./routes/tokenRoutes.js";
@@ -27,5 +28,7 @@ connectDB().then(() => {
     console.log(`🚀 Server running on http://localhost:${PORT}`)
   );
 });
+
+startScheduledDonations();
 
 export default app;
