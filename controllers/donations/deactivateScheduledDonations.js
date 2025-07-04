@@ -1,4 +1,4 @@
-import ScheduledDonation from "../../models/scheduledDonations";
+import ScheduledDonation from "../../models/scheduledDonations.js";
 
 export const deactivateSchedule = async (req, res) => {
   try {
