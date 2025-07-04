@@ -10,6 +10,7 @@ import authRoute from "./routes/authRoute.js";
 import tokenRoute from "./routes/tokenRoutes.js";
 import donationRoute from "./routes/donationRoute.js";
 import vendorPurchaseRoute from "./routes/vendorRoute.js";
+import userRoute from "./routes/userRoute.js"
 const app = express();
 
 // Middleware
@@ -21,6 +22,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/tokens", tokenRoute);
 app.use("/api/donations", donationRoute);
 app.use("/api/purchase", vendorPurchaseRoute);
+app.use("/api/users", userRoute)
 
 connectDB().then(() => {
   const PORT = process.env.PORT || 5000;

@@ -4,6 +4,9 @@ import { getDonationHistory } from "../controllers/donations/donationHistory.js"
 import { createScheduledDonations } from "../controllers/donations/scheduledDonations.js";
 import { getUserScheduledDonations } from "../controllers/donations/userScheduledDonations.js";
 import { deactivateSchedule } from "../controllers/donations/deactivateScheduledDonations.js";
+import { getDonationsById } from "../controllers/donations/donationById.js";
+import { getDonationsByAccountNumber } from "../controllers/donations/donationByAccountNumber.js";
+import {getDonationByDonationType} from "../controllers/donations/donationsByDonationType.js"
 
 const donationRoute = express.Router();
 
@@ -15,5 +18,8 @@ donationRoute.get(
   getUserScheduledDonations
 );
 donationRoute.patch("/deactivate/:scheduleId", deactivateSchedule);
+donationRoute.get("/donationById/:donationId", getDonationsById);
+donationRoute.get("/donationsByAccountNumber/:accountNumber", getDonationsByAccountNumber);
+donationRoute.get("/donationType/:donationType", getDonationByDonationType)
 
 export default donationRoute;
