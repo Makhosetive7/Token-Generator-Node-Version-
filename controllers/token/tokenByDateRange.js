@@ -1,4 +1,4 @@
-import Token from "../../models/token.js";
+import Token from "../../models/token/token.js";
 
 export const getTokensByDate = async (req, res) => {
   try {

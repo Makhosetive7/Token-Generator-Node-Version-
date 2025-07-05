@@ -1,5 +1,5 @@
-import User from "../../models/user.js";
-import TokenRequest from "../../models/tokenRequest.js";
+import User from "../../models/user/user.js";
+import TokenRequest from "../../models/token/tokenRequest.js"
 
 export const approveRejectTokenRequest = async (req, res) => {
   try {

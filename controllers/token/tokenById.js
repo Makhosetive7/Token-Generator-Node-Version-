@@ -1,4 +1,4 @@
-import Tokens from "../../models/token.js";
+import Tokens from "../../models/token/token.js";
 
 export const getTokensById = async (req, res) => {
   try {

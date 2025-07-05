@@ -1,6 +1,6 @@
 import express from "express"
-import {getUserById} from "../controllers/users/userById.js"
-import {getUserByAccountNumber} from "../controllers/users/userByAccountNumber.js"
+import {getUserById} from "../controllers/user/userById.js"
+import {getUserByAccountNumber} from "../controllers/user/userByAccountNumber.js"
 
 const userRoute = express.Router()
 

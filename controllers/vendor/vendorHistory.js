@@ -1,5 +1,5 @@
-import User from "../../models/user.js";
-import Vendor from "../../models/vendor.js";
+import User from "../../models/user/user.js";
+import Vendor from "../../models/vendor/vendor.js";
 
 export const getVendorPurchaseHistory = async (req, res) => {
   try {

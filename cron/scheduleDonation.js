@@ -1,7 +1,7 @@
 import cron from "node-cron";
-import ScheduledDonations from "../models/scheduledDonations.js";
-import User from "../models/user.js";
-import Donations from "../models/donations.js";
+import ScheduledDonations from "../models/donation/scheduledDonations.js";
+import User from "../models/user/user.js"
+import Donations from "../models/donation/donations.js";
 import { DONATION_TYPE_TO_ACCOUNT } from "../utils/constants.js";
 import { conversionRate } from "../utils/donations.js";
 

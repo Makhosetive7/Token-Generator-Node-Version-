@@ -1,11 +1,11 @@
 import express from "express";
-import { generateTokens } from "../controllers/tokens/generateToken.js";
-import { createTransferToken } from "../controllers/tokens/tokenTransfer.js";
-import { requestToken } from "../controllers/tokens/tokenRequest.js";
-import { approveRejectTokenRequest } from "../controllers/tokens/approveOrRejectTokenRequest.js";
-import { getTokensById } from "../controllers/tokens/tokenById.js";
-import { getTokensByAccountNumber } from "../controllers/tokens/tokenGeneratedByAccountNumber.js";
-import { getTokensByDate } from "../controllers/tokens/tokenByDateRange.js";
+import { generateTokens } from "../controllers/token/generateToken.js";
+import { createTransferToken } from "../controllers/token/tokenTransfer.js";
+import { requestToken } from "../controllers/token/tokenRequest.js";
+import { approveRejectTokenRequest } from "../controllers/token/approveOrRejectTokenRequest.js";
+import { getTokensById } from "../controllers/token/tokenById.js";
+import { getTokensByAccountNumber } from "../controllers/token/tokenGeneratedByAccountNumber.js";
+import { getTokensByDate } from "../controllers/token/tokenByDateRange.js";
 
 const tokenRoutes = express.Router();
 

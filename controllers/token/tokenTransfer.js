@@ -1,5 +1,5 @@
-import User from "../../models/user.js";
-import TokenTransfer from "../../models/tokenTransfer.js";
+import User from "../../models/user/user.js";
+import TokenTransfer from "../../models/token/tokenTransfer.js";
 
 export const createTransferToken = async (req, res) => {
   try {

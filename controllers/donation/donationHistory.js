@@ -1,5 +1,5 @@
-import User from "../../models/user.js";
-import Donation from "../../models/donations.js";;
+import User from "../../models/user/user.js";
+import Donation from "../../models/donation/donations.js";
 
 export const getDonationHistory = async (req, res) => {
   try {

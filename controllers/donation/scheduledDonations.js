@@ -1,5 +1,5 @@
-import ScheduledDonation from "../../models/scheduledDonations.js";
-import User from "../../models/user.js";
+import ScheduledDonation from "../../models/donation/scheduledDonations.js";
+import User from "../../models/user/user.js";
 
 export const createScheduledDonations = async (req, res) => {
   try {

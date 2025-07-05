@@ -1,4 +1,4 @@
-import Donations from "../../models/donations.js";
+import Donations from "../../models/donation/donations.js";
 
 export const getDonationByDonationType = async (req, res) => {
   try {

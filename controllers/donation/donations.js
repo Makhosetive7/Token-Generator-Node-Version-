@@ -1,6 +1,6 @@
-import User from "../../models/user.js";
-import Token from "../../models/token.js";
-import Donation from "../../models/donations.js";
+import User from "../../models/user/user.js";
+import Token from "../../models/token/token.js";
+import Donation from "../../models/donation/donations.js";
 import { conversionRate } from "../../utils/donations.js";
 import { DONATION_TYPE_TO_ACCOUNT } from "../../utils/constants.js";
 

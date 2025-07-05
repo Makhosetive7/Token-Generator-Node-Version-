@@ -4,8 +4,8 @@ import {
   calculateKwFromAmount,
   getTokenExpiryDate,
 } from "../../utils/tokenUtils.js";
-import User from "../../models/user.js";
-import Token from "../../models/token.js";
+import User from "../../models/user/user.js";
+import Token from "../../models/token/token.js";
 
 export const generateTokens = async (req, res) => {
   try {

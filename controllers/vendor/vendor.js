@@ -1,5 +1,5 @@
-import User from "../../models/user.js";
-import Vendor from "../../models/vendor.js";
+import User from "../../models/user/user.js";
+import Vendor from "../../models/vendor/vendor.js"
 import { vendorConversionRate } from "../../utils/vendorConstants.js";
 import { VENDOR_TYPE_TO_ACCOUNT } from "../../utils/constants.js";
 
